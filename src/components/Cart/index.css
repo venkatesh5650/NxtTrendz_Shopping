@@ -1,0 +1,112 @@
+.cart-container {
+  display: flex;
+  justify-content: center;
+  min-height: 75vh;
+}
+
+@media screen and (min-width: 768px) {
+  .cart-container {
+    min-height: 90vh;
+  }
+}
+
+.cart-content-container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: 1110px;
+}
+
+@media screen and (min-width: 768px) {
+  .cart-content-container {
+    width: 80%;
+    max-width: 1110px;
+  }
+}
+
+.cart-heading {
+  color: #3e4c59;
+  font-family: 'Roboto';
+  font-size: 24px;
+  font-weight: 700;
+}
+
+@media screen and (min-width: 768px) {
+  .cart-heading {
+    font-size: 48px;
+  }
+}
+
+/* Write your CSS here */
+.CartSummary {
+  display: flex;
+  justify-content: flex-end;
+}
+.CartSummaryHead {
+  color: #616e7c;
+  font-weight: 600;
+  font-size: 30px;
+}
+.cartPara {
+  font-size: 20px;
+  font-weight: 400;
+  color: #616e7c;
+}
+.checkoutBtn {
+  background-color: #0b69ff;
+  color: white;
+  font-size: 20px;
+  font-weight: 500;
+  height: 40px;
+  width: 350px;
+  text-align: center;
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  margin-bottom: 50px;
+}
+.amountRs {
+  color: #171f46;
+  font-weight: 600;
+  font-size: 35px;
+}
+.removeAll {
+  display: flex;
+  justify-content: flex-end;
+}
+.removeAllBtn {
+  border: none;
+  outline: none;
+  color: #0b69ff;
+  font-weight: 700;
+  font-size: 20px;
+  background: transparent;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .CartSummaryHead {
+    font-size: 20px;
+  }
+  .removeAllBtn {
+    font-size: 15px;
+    font-weight: 600;
+  }
+  .cartPara {
+    font-size: 12px;
+  }
+  .checkoutBtn {
+    background-color: #0b69ff;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    height: 30px;
+    width: 300px;
+    margin-bottom: 50px;
+  }
+  .amountRs {
+    color: #171f46;
+    font-weight: 600;
+    font-size: 25px;
+  }
+}

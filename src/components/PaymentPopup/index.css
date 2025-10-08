@@ -1,0 +1,174 @@
+/* 🔹 Popup Overlay */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 10px;
+  backdrop-filter: blur(4px);
+}
+
+/* 🔹 Popup Container */
+.popup-container {
+  width: 100%;
+  padding: 24px;
+  background: linear-gradient(145deg, #ffffff, #f7f9fc);
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  animation: popupFade 0.4s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+
+@keyframes popupFade {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* 🔹 Title */
+.popup-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1e3a8a;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* 🔹 Payment Options */
+.payment-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.payment-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #f3f4f6;
+  transition: all 0.3s ease;
+  cursor: not-allowed;
+  font-size: 16px;
+}
+
+.payment-option.enabled {
+  background: linear-gradient(90deg, #22c55e, #16a34a);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 3px 8px rgba(34, 197, 94, 0.4);
+}
+
+.payment-option.enabled:hover {
+  transform: scale(1.02);
+  background: linear-gradient(90deg, #16a34a, #15803d);
+}
+
+.payment-option.disabled {
+  background: #e5e7eb;
+  color: #888;
+  opacity: 0.7;
+}
+
+.payment-option input {
+  accent-color: #22c55e;
+  transform: scale(1.2);
+}
+
+/* 🔹 Order Summary */
+.order-summary {
+  background: #eef2ff;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 15px;
+  color: #1e293b;
+  border: 1px solid #cbd5e1;
+  margin-bottom: 16px;
+}
+
+.order-summary h3 {
+  font-size: 17px;
+  margin-bottom: 5px;
+  color: #1e3a8a;
+}
+
+/* 🔹 Confirm Button */
+.confirmBtn {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 10px rgba(37, 99, 235, 0.4);
+}
+
+.confirmBtn:hover:not(:disabled) {
+  background: linear-gradient(90deg, #1d4ed8, #1e3a8a);
+  transform: scale(1.03);
+}
+
+.confirmBtn:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* 🔹 Success Message */
+.success-message {
+  font-size: 19px;
+  color: #16a34a;
+  font-weight: 700;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🔹 Responsive Design */
+@media (max-width: 480px) {
+  .popup-container {
+    width: 95%;
+    padding: 18px;
+  }
+
+  .popup-title {
+    font-size: 20px;
+  }
+
+  .payment-option {
+    font-size: 15px;
+  }
+
+  .confirmBtn {
+    font-size: 15px;
+    padding: 10px;
+  }
+}

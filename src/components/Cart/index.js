@@ -1,8 +1,13 @@
+import Popup from 'reactjs-popup'
+import 'reactjs-popup/dist/index.css'
+
 import Header from '../Header'
 import CartListView from '../CartListView'
 
 import CartContext from '../../context/CartContext'
 import EmptyCartView from '../EmptyCartView'
+
+import PaymentPopup from '../PaymentPopup'
 
 import './index.css'
 
@@ -10,12 +15,16 @@ const Cart = () => (
   <CartContext.Consumer>
     {value => {
       const {cartList, removeAllCartItems} = value
-      const showEmptyView = cartList.length === 0
-      const totalAmount = cartList.reduce(
-        (sum, eachItem) => sum + eachItem.price * eachItem.quantity,
-        0,
-      )
-      const cartItemsCount = cartList.length
+      const showEmptyView = !Array.isArray(cartList) || cartList.length === 0
+
+      const totalAmount = Array.isArray(cartList)
+        ? cartList.reduce(
+            (sum, eachItem) => sum + eachItem.price * eachItem.quantity,
+            0,
+          )
+        : 0
+
+      const cartItemsCount = Array.isArray(cartList) ? cartList.length : 0
 
       // TODO: Update the functionality to remove all the items in the cart
 
@@ -50,9 +59,23 @@ const Cart = () => (
                     </h1>
                     <p className="cartPara">{cartItemsCount} Items in cart</p>
                     <div className="desktopBtn">
-                      <button type="button" className="checkoutBtn">
-                        Checkout
-                      </button>
+                      <Popup
+                        trigger={
+                          <button type="button" className="checkoutBtn">
+                            Checkout
+                          </button>
+                        }
+                        modal
+                        nested
+                      >
+                        {close => (
+                          <PaymentPopup
+                            close={close}
+                            cartItemsCount={cartItemsCount}
+                            totalAmount={totalAmount}
+                          />
+                        )}
+                      </Popup>
                     </div>
                   </div>
                 </div>

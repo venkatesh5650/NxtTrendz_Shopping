@@ -1,5 +1,5 @@
-import {useState} from 'react'
-
+import {useState, useContext} from 'react'
+import CartContext from '../../context/CartContext'
 import './index.css'
 
 const paymentOptions = [
@@ -14,13 +14,20 @@ const PaymentPopup = ({close, cartItemsCount, totalAmount}) => {
   const [selectedPayment, setSelectedPayment] = useState('')
   const [orderPlaced, setOrderPlaced] = useState(false)
 
+  const {removeAllCartItems} = useContext(CartContext)
+
   const handleConfirm = () => {
     if (selectedPayment === 'Cash on Delivery') {
+      // Show success message
       setOrderPlaced(true)
+
+      // Wait 2 seconds before closing popup
       setTimeout(() => {
         close()
+        removeAllCartItems()
       }, 2000)
     }
+    // Clear the cart
   }
 
   return (
